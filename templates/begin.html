@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h2>Оценка недвижимости</h2>
+        <p>Узнайте рыночную стоимость квартиры, дома или участка.</p>
+    </div>
+</section>
+
+<section class="form">
+    <div class="container">
+        <form action="/start" method="post" class="needs-validation" novalidate>
+            {{ form.hidden_tag() }}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nedv">Тип недвижимости</label>
+                        {{ form.nedv(class="form-control select2", id="nedv") }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="address">Адрес</label>
+                        {{ form.address(class="form-control", id="address") }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="area">Площадь (м²)</label>
+                        {{ form.area(class="form-control small-square", pattern="[0-9]+", id="area") }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="living_area">Жилая площадь (м²)</label>
+                        {{ form.living_area(class="form-control small-square", pattern="[0-9]+", id="living_area") }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="kitchen_area">Площадь кухни (м²)</label>
+                        {{ form.kitchen_area(class="form-control small-square", pattern="[0-9]+", id="living_area") }}
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="rooms">Количество комнат</label>
+                        {{ form.rooms(class="form-control select2", id="rooms") }}
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                {{ form.submit_start(type="submit", class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container2 text-center"> <!-- Добавлен класс text-center для выравнивания по центру -->
+    <h1 class="heading">Итоговая цена:</h1>
+    <div class="price-wrapper">
+        <h1 class="price">{{ "{:,.0f}".format(price).replace(',', ' ') }} рублей</h1>
+    </div>
+</div>
+<div class="text-center"> <!-- Добавлен класс text-center для выравнивания по центру -->
+    {{ form.back_total(type="submit", class="btn btn-primary") }}
+</div>
+{% endblock %}

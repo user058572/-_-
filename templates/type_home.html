@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="margin-top: 50px; padding: 20px; text-align: center;">
+    <h2 style="margin-bottom: 20px;">Укажите тип дома</h2>
+
+    <form action="/type_home" method="post">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+
+        {% for subfield in form.choices %}
+        <div class="radio" style="margin-bottom: 10px;">
+            <div>
+                <input type="radio" id="{{ subfield.id }}" name="{{ subfield.name }}" value="{{ subfield.data }}"
+                       {% if subfield.data==zvzv %}
+                       checked
+                       {% endif %}
+                       style="margin-right: 10px;">
+                <label for="{{ subfield.id }}" style="color: #007bff; font-size: 18px;">{{ subfield.label }}</label>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div style="display: flex; justify-content: center;">
+            <div style="margin-right: 10px;">
+                {{ form.back(type="submit", class="btn btn-primary") }}
+            </div>
+            <div>
+                {{ form.submit(type="submit", class="btn btn-primary") }}
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

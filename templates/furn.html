@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/furnitures" method="post">
+    {{ form.csrf_token }}
+
+    {% if check_furn %}
+    <p>{{ form.furn(checked=true) }}{{ form.furn.label }}</p>
+    {% else %}
+    <p>{{ form.furn() }}{{ form.furn.label }}</p>
+    {% endif %}
+
+    {% if check_tech %}
+    <p>{{ form.tech(checked=true) }}{{ form.tech.label }}</p>
+    {% else %}
+    <p>{{ form.tech() }}{{ form.tech.label }}</p>
+    {% endif %}
+
+    <p>{{ form.back_furn(type="submit", class="btn btn-primary") }}</p>
+    <p>{{ form.submit_furn(type="submit", class="btn btn-primary") }}</p>
+</form>
+
+{% endblock %}
